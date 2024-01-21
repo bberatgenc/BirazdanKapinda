@@ -1,0 +1,49 @@
+﻿@model List<BirazdanKapinda.Models.ApplicationUser>
+@{
+}
+<div class="card shadow border-0 my-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white bg-warning py-2">KULLANICI YÖNETİMİ</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>İsim-Soyisim</th>
+                    <th>Email</th>
+                    <th>Telefon</th>
+                    <th>Firma</th>
+                    <th>İşlev</th>
+                    <th>Yetkilendirme</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var user in Model)
+                {
+                    <tr>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td>@user.PhoneNumber</td>
+                        <td>@user.Company</td>
+                        <td>@user.Role</td>
+                        <td> <div class="text-center">
+                                <a href="/admin/user/RoleManagment?userId=@user.Id" class="btn btn-danger text-white" style="cursor:pointer; width:150px;">
+                                     <i class="bi bi-pencil-square"></i> Yetkiler
+                                </a>
+                        </div> 
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/user.js"></script>
+        
+}
